@@ -23,6 +23,7 @@ class Agent:
     def learn(self, iterations):
         for i in range(iterations):
             self.score = 0
+            self.current_pos = self.env.start_pos
             while not self.env.is_episode_complete(self.score):
                 if np.random.uniform() < self.epsilon:
                     self.explore()
@@ -76,7 +77,7 @@ class Agent:
             all_pos.append(current_pos)
 
         print(all_pos)
-        print(score)
+        print("Score:", score)
 
     def print_all_qtables(self):
         for qtable in self.qtables:
